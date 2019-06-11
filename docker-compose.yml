@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: web.Dockerfile
+    container_name: nginx_cp
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - "tomcat"
+
+  tomcat:
+    build:
+      context: ./tomcat
+      dockerfile: tomcat.Dockerfile
+    container_name: tomcat_cp
+    ports:
+      - 8080:8080
+    volumes:
+      - ./tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      - ./tomcat/server.xml:/usr/local/tomcat/conf/server.xml
+      - /var/lib/docker/volumes/http-custom-data/_data:/usr/share/tomcat/webapps
