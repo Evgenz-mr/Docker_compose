@@ -4,12 +4,6 @@ Create Dockerfile:
 - applecation.Dockerfile
 - tomcat.Dockerfile
 
-Create docker-compose.yml file with:
-
-- nginx
-- ubuntu
-- tomcat
-
 Add configuration file for tomcat:
 
 - server.xml
@@ -18,6 +12,12 @@ Add configuration file for tomcat:
 
 Add configuration file for nginx - default.conf.
 
+
+Create docker-compose.yml file with service:
+
+- nginx
+- ubuntu
+- tomcat
 
 RUN SERVICE (nginx/ubuntu/tomcat/)
  
