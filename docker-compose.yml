@@ -14,14 +14,21 @@ services:
     links:
       - "tomcat"
 
+  app:
+    build:
+      context: ./application
+      dockerfile: application.Dockerfile
+    container_name: app_cp
+    command: ["tail", "-f", "/dev/null"]
+    volumes:
+      - /var/lib/docker/volumes/application/_data:/opt
+
   tomcat:
     build:
       context: ./tomcat
       dockerfile: tomcat.Dockerfile
     container_name: tomcat_cp
-    ports:
-      - 8080:8080
     volumes:
       - ./tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
       - ./tomcat/server.xml:/usr/local/tomcat/conf/server.xml
-      - /var/lib/docker/volumes/http-custom-data/_data:/usr/share/tomcat/webapps
+      - /var/lib/docker/volumes/application/_data:/usr/share/tomcat/webapps
