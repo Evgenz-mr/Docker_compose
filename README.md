@@ -1,17 +1,37 @@
-Create docker-compose.yml file to build containers from previos task
-Run "environment" in daemon mode
-Create own branch (epam login without @epam.com, in lowercase)
-Create PR with description of reported task
-All needed resources (if they are) must be placed into /resources folder
+Create Dockerfile:
+
+- web.Dockerfile
+- applecation.Dockerfile
+- tomcat.Dockerfile
+
+Create docker-compose.yml file with:
+
+- nginx
+- ubuntu
+- tomcat
+
+Add configuration file for tomcat:
+
+- server.xml
+- context.xml 
+- tomcat-users.xml
+
+Add configuration file for nginx - default.conf.
 
 
-docker-compose: tomcat + nginx
+RUN SERVICE (nginx/ubuntu/tomcat/)
+ 
+- You are can running this is service (docker-compose.yml) using " docker-compose up --build "
 
-- localhost/tomcat
-- localhost/sample
 
-Usage:
-docker-compose up -d
+USAGE COMMAND:
+
+      COMMAND                      |               DESCRIPTION
+
+- docker-compose up --build        |        Build images before starting containers
+- docker-compose up -d             |        Starts the containers in the background and leaves them running     
+- docker-compose ps                |        List is running containers
+- docker-compose stop              |        Stop services
 
 
 MANUALS:
